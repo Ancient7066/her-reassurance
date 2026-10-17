@@ -1,0 +1,651 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>For Aashi, from Vikram</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=DM+Sans:wght@400;500&display=swap">
+<style>
+/* Layout concept: one fixed night sky (canvas) behind a single long scroll of glass cards.
+   Two small lights start far apart and drift together as you read, ending close but separate. */
+:root {
+  --night-0: #070b1f;
+  --night-1: #0d1233;
+  --night-2: #1b1a4d;
+  --violet: #8f86e0;
+  --violet-soft: #bdb6f4;
+  --peach: #ffb996;
+  --gold: #f4cf86;
+  --ink: #eeecfa;
+  --ink-dim: #bcb9da;
+  --glass: rgba(24, 24, 70, 0.62);
+  --glass-line: rgba(200, 192, 255, 0.2);
+  --btn-ink: #1a1232;
+  --font-display: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  --font-body: "DM Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html[data-still="true"] { scroll-behavior: auto; }
+body {
+  background: var(--night-0);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+#sky { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; display: block; }
+main { position: relative; z-index: 1; }
+.wrap { width: 100%; max-width: 1040px; margin-inline: auto; }
+.narrow { max-width: 680px; }
+
+h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.12; margin: 0; text-wrap: balance; letter-spacing: 0.005em; }
+h1 { font-size: clamp(2.7rem, 8.2vw, 5.6rem); line-height: 1.02; }
+h2 { font-size: clamp(1.95rem, 4.8vw, 3.2rem); }
+h3 { font-size: 1.4rem; font-weight: 600; }
+p { margin: 0; }
+.eyebrow { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.1rem; }
+.lede { font-size: clamp(1.1rem, 2.4vw, 1.3rem); color: var(--ink); max-width: 36rem; }
+.dim { color: var(--ink-dim); }
+.hl { font-style: italic; color: var(--gold); background: linear-gradient(transparent 64%, rgba(244, 207, 134, 0.2) 0); padding-inline: 0.05em; }
+
+.sec { padding-block: clamp(4.5rem, 12vh, 8rem); position: relative; }
+.stack { display: flex; flex-direction: column; gap: 1.6rem; }
+
+.glass {
+  background: var(--glass);
+  border: 1px solid var(--glass-line);
+  border-radius: 26px;
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 24px 60px -28px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+.tilt { transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform 0.5s ease; will-change: transform; }
+html[data-still="true"] .tilt { transform: none !important; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 0.6rem; width: fit-content; max-width: 100%;
+  font: 500 1rem/1.2 var(--font-body); color: var(--btn-ink);
+  background: linear-gradient(120deg, var(--peach), var(--gold));
+  border: 0; border-radius: 999px; padding: 0.95rem 1.5rem; cursor: pointer; text-decoration: none;
+  box-shadow: 0 10px 30px -10px rgba(255, 185, 150, 0.55);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 14px 34px -10px rgba(255, 185, 150, 0.7); }
+.btn.ghost { background: rgba(189, 182, 244, 0.12); color: var(--ink); border: 1px solid var(--glass-line); box-shadow: none; }
+.btn.ghost:hover { background: rgba(189, 182, 244, 0.2); }
+.btn svg { flex: none; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 12px; }
+.btn:focus-visible { border-radius: 999px; }
+
+.rv { transition: opacity 1.1s ease, transform 1.1s ease; }
+.rv.pre { opacity: 0.25; transform: translateY(18px); }
+html[data-still="true"] .rv { transition: none; }
+html[data-still="true"] .rv.pre { opacity: 1; transform: none; }
+
+.skip { position: absolute; left: -999px; top: 8px; z-index: 50; background: var(--night-1); color: var(--ink); padding: 0.6rem 1rem; border-radius: 10px; }
+.skip:focus { left: max(16px, env(safe-area-inset-left, 0px)); }
+
+/* hero */
+.hero { min-height: 92vh; min-height: 92svh; padding-top: clamp(7rem, 20svh, 11rem); display: flex; align-items: flex-start; }
+.hero-in { display: flex; flex-direction: column; gap: 1.6rem; align-items: flex-start; }
+.hero h1 .n1 { color: var(--peach); font-style: italic; }
+.hero h1 .n2 { color: var(--violet-soft); font-style: italic; }
+
+/* honest */
+.honest-card { padding: clamp(1.6rem, 4.5vw, 3.2rem); display: flex; flex-direction: column; gap: 1.3rem; }
+.honest-card .lead { font-family: var(--font-display); font-size: clamp(1.9rem, 5vw, 3rem); line-height: 1.15; font-weight: 500; }
+.honest-card p.body { font-size: clamp(1.1rem, 2.2vw, 1.28rem); line-height: 1.75; max-width: 40rem; }
+.core { margin-top: 2rem; padding-inline: clamp(0.25rem, 2vw, 1rem); display: flex; flex-direction: column; gap: 0.7rem; }
+.core .label { font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--violet-soft); font-weight: 500; }
+.core p { font-size: 1.1rem; color: var(--ink-dim); max-width: 44rem; }
+
+/* help */
+.help-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+.note { padding: 1.4rem 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; border-radius: 20px; }
+.note .label { font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--peach); font-weight: 500; }
+.mini { position: relative; aspect-ratio: 16 / 11; max-width: 100%; border-radius: 22px; overflow: hidden; border: 1px solid var(--glass-line);
+  background: linear-gradient(180deg, #0a0e2b 0%, #171a4a 100%); }
+.mini::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 115%, rgba(255, 185, 150, 0.5), rgba(255, 185, 150, 0) 62%); opacity: 0; transition: opacity 2s ease; pointer-events: none; }
+.mini.s3::after { opacity: 1; }
+.st { position: absolute; width: 4px; height: 4px; transform: translate(calc(var(--jx) * var(--j, 0)), calc(var(--jy) * var(--j, 0))); transition: transform 1.8s ease; }
+.st i { display: block; width: 100%; height: 100%; border-radius: 50%; background: #fff; box-shadow: 0 0 8px 1px rgba(255, 255, 255, 0.5); animation: tremble 2.6s ease-in-out infinite alternate; }
+.mini.s0 .st, .mini.s1 .st { --j: 1; }
+.mini.s2 .st i, .mini.s3 .st i { animation: none; }
+html[data-still="true"] .st i { animation: none; }
+@keyframes tremble { from { transform: translate(-2px, 1px); } to { transform: translate(2px, -1px); } }
+.msg { position: absolute; left: 6%; bottom: 8%; max-width: 78%; font-size: 0.88rem; line-height: 1.4; padding: 0.65rem 0.9rem; border-radius: 16px 16px 16px 4px;
+  background: rgba(255, 233, 210, 0.95); color: #2a1f3d; z-index: 2; transition: opacity 0.9s ease, transform 0.9s ease; }
+.mini.s0 .msg { opacity: 0; transform: translateY(14px); }
+.steps { list-style: none; margin: 1.2rem 0 0; padding: 0; display: grid; gap: 0.6rem; counter-reset: s; }
+.steps li { counter-increment: s; display: flex; gap: 0.8rem; align-items: center; color: var(--ink-dim); transition: color 0.8s ease; }
+.steps li::before { content: counter(s); flex: none; width: 1.7rem; height: 1.7rem; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--glass-line); font-size: 0.82rem; transition: all 0.8s ease; }
+.steps li.on { color: var(--ink); }
+.steps li.on::before { background: linear-gradient(120deg, var(--peach), var(--gold)); color: var(--btn-ink); border-color: transparent; }
+
+/* feelings */
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; align-items: start; margin-top: 2.4rem; }
+.fcard { border-radius: 22px; overflow: hidden; }
+.fcard h3 { font-size: inherit; }
+.fbtn { width: 100%; display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; text-align: left; background: none; border: 0; color: var(--ink); cursor: pointer; padding: 1.4rem 1.4rem 1.2rem; font: inherit; position: relative; }
+.fbtn .ico { width: 44px; height: 44px; }
+.fbtn .ft { font-family: var(--font-display); font-size: 1.45rem; font-weight: 600; line-height: 1.15; padding-right: 2rem; }
+.fbtn .hint { font-size: 0.82rem; color: var(--ink-dim); }
+.fbtn .plus { position: absolute; top: 1.4rem; right: 1.3rem; width: 1.2rem; height: 1.2rem; }
+.fbtn .plus::before, .fbtn .plus::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 2px; margin-top: -1px; background: var(--gold); border-radius: 2px; transition: transform 0.4s ease; }
+.fbtn .plus::after { transform: rotate(90deg); }
+.fbtn[aria-expanded="true"] .plus::after { transform: rotate(0deg); }
+.fpanel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.55s ease; }
+.fpanel > div { overflow: hidden; min-height: 0; }
+.fpanel p { padding: 0 1.4rem 1.5rem; color: var(--ink); }
+.fbtn[aria-expanded="true"] + .fpanel, .fcard.open .fpanel { grid-template-rows: 1fr; }
+html[data-still="true"] .fpanel { transition: none; }
+
+/* breathe */
+.breathe { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.4rem; }
+.orbwrap { width: clamp(210px, 52vw, 300px); aspect-ratio: 1; display: grid; place-items: center; max-width: 100%; }
+.orb { width: 66%; aspect-ratio: 1; border-radius: 50%; transform: scale(0.86);
+  background: radial-gradient(circle at 38% 34%, rgba(255, 244, 226, 0.98), rgba(255, 185, 150, 0.8) 38%, rgba(143, 134, 224, 0.6) 74%);
+  box-shadow: 0 0 60px 18px rgba(255, 185, 150, 0.22), 0 0 150px 54px rgba(143, 134, 224, 0.2); }
+.phase { min-height: 1.7em; color: var(--ink-dim); font-size: 1.05rem; }
+
+/* talk */
+.bubbles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.3rem; margin-top: 2.4rem; }
+.bubble { padding: 1.4rem 1.5rem 1.6rem; border-radius: 24px; display: flex; flex-direction: column; gap: 0.7rem; min-width: 0; }
+.bubble.v { border-bottom-left-radius: 6px; }
+.bubble.a { border-bottom-right-radius: 6px; margin-top: 2.4rem; }
+.who { display: flex; align-items: center; gap: 0.55rem; font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; }
+.who .dot { width: 10px; height: 10px; border-radius: 50%; }
+.v .dot { background: var(--violet-soft); box-shadow: 0 0 12px 2px rgba(189, 182, 244, 0.7); }
+.a .dot { background: var(--peach); box-shadow: 0 0 12px 2px rgba(255, 185, 150, 0.7); }
+.bubble p.q { font-family: var(--font-display); font-size: 1.6rem; line-height: 1.25; font-weight: 500; }
+.talk-actions { display: flex; flex-direction: column; gap: 1.2rem; align-items: flex-start; margin-top: 2.2rem; }
+.reveal-msg { font-family: var(--font-display); font-size: 1.55rem; line-height: 1.3; color: var(--gold); max-width: 34rem; animation: fadeup 1.2s ease both; }
+html[data-still="true"] .reveal-msg { animation: none; }
+@keyframes fadeup { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+/* closing */
+.closing { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; padding-top: 30svh; }
+.closing .copy { font-family: var(--font-display); font-size: clamp(1.45rem, 3.4vw, 2.05rem); line-height: 1.4; max-width: 40rem; text-shadow: 0 2px 24px rgba(7, 11, 31, 0.9); }
+.sign { margin-top: 1.8rem; font-family: var(--font-display); font-style: italic; font-size: 1.7rem; line-height: 1.3; color: var(--peach); text-shadow: 0 2px 24px rgba(7, 11, 31, 0.9); }
+.sign b { display: block; font-weight: 600; font-size: 2.2rem; color: var(--gold); }
+
+/* progress, nav, dock */
+.bar { position: fixed; top: env(safe-area-inset-top, 0px); left: 0; width: 100%; height: 3px; transform-origin: left; transform: scaleX(0); background: linear-gradient(90deg, var(--violet), var(--peach)); z-index: 30; }
+.dots { position: fixed; right: max(18px, env(safe-area-inset-right, 0px)); top: 50%; transform: translateY(-50%); z-index: 20; display: none; flex-direction: column; gap: 0.9rem; }
+.dots a { position: relative; display: block; width: 11px; height: 11px; border-radius: 50%; border: 1.5px solid var(--violet-soft); background: transparent; transition: all 0.4s ease; }
+.dots a[aria-current="true"] { background: var(--gold); border-color: var(--gold); box-shadow: 0 0 12px 2px rgba(244, 207, 134, 0.6); transform: scale(1.2); }
+.dots a span { position: absolute; right: 22px; top: 50%; transform: translateY(-50%); white-space: nowrap; font-size: 0.82rem; padding: 0.25rem 0.7rem; border-radius: 999px; background: rgba(13, 18, 51, 0.92); color: var(--ink); opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+.dots a:hover span, .dots a:focus-visible span { opacity: 1; }
+.dock { position: fixed; left: 0; right: 0; bottom: max(14px, env(safe-area-inset-bottom, 0px)); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: flex; justify-content: space-between; align-items: center; gap: 0.6rem; z-index: 25; pointer-events: none; }
+.dock > * { pointer-events: auto; }
+.pill, .mbtn { font: 500 0.8rem/1 var(--font-body); color: var(--ink); background: rgba(13, 18, 51, 0.86); border: 1px solid var(--glass-line); border-radius: 999px; padding: 0.65rem 0.95rem; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.pill { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mbtn { cursor: pointer; white-space: nowrap; }
+.mbtn[aria-pressed="true"] { background: var(--violet); color: var(--btn-ink); }
+
+@media (min-width: 900px) {
+  .dots { display: flex; }
+  .pill { display: none; }
+  .dock { justify-content: flex-end; }
+}
+@media (max-width: 860px) {
+  .help-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 720px) {
+  .cards { grid-template-columns: minmax(0, 1fr); }
+  .bubbles { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  .bubble.a { margin-top: 0; margin-left: 8%; }
+  .sec { padding-block: 4.2rem; }
+}
+</style>
+
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="bar" id="bar" aria-hidden="true"></div>
+<a class="skip" href="#honest">Skip to the message</a>
+
+<nav class="dots" id="dots" aria-label="Sections">
+  <a href="#hello" data-go><span>Hello</span></a>
+  <a href="#honest" data-go><span>The honest part</span></a>
+  <a href="#help" data-go><span>What would help</span></a>
+  <a href="#feelings" data-go><span>How it feels</span></a>
+  <a href="#breathe" data-go><span>A quiet moment</span></a>
+  <a href="#talk" data-go><span>Our conversation</span></a>
+  <a href="#closing" data-go><span>With love</span></a>
+</nav>
+
+<main>
+  <section class="sec hero" id="hello" data-label="Hello" aria-labelledby="h-hello">
+    <div class="wrap hero-in">
+      <h1 id="h-hello" class="rv">For <span class="n1">Aashi</span>, from <span class="n2">Vikram</span></h1>
+      <p class="lede rv">There’s something personal I want to share with you—not to pressure you, just to help you understand what I feel.</p>
+      <a class="btn rv" href="#honest" data-go>Read what’s on my mind
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <section class="sec" id="honest" data-label="The honest part" aria-labelledby="h-honest">
+    <div class="wrap">
+      <div class="glass tilt honest-card rv">
+        <p class="eyebrow" style="margin:0">The honest part</p>
+        <h2 id="h-honest" class="lead">Sometimes <span class="hl">I feel anxious and worried</span> when you’re away and I haven’t heard from you.</h2>
+        <p class="body">Sometimes, when you’re away or I haven’t heard from you for a while, I start to feel really anxious. If I don’t know whether you’re busy or okay, my mind fills in the blanks and I worry. I know that feeling is mine to work on, and I don’t want it to limit your freedom. I just want to be honest with you about what happens inside me.</p>
+      </div>
+      <div class="core rv">
+        <p class="label">In a few words</p>
+        <p>When I don’t hear from you for a while and don’t know whether you’re busy, out, or okay, my mind can spiral. I feel anxious and worried because I care about you. A small heads-up when you’re heading out or know you’ll be unavailable would help me feel reassured, if that’s something you’re comfortable with. I’m not asking you to share your exact location or report everything you do. I want us to talk about what feels reasonable for both of us.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="help" data-label="What would help" aria-labelledby="h-help">
+    <div class="wrap help-grid">
+      <div class="stack">
+        <p class="eyebrow rv" style="margin:0">What would help</p>
+        <h2 id="h-help" class="rv">Even a little context can help me feel more at ease.</h2>
+        <p class="rv" style="font-size:1.15rem">If you’re comfortable, a simple message like “I’m heading out, I might be busy for a bit” or “I’m okay, I’ll talk to you later” would mean a lot.</p>
+        <div class="glass note rv">
+          <p class="label">To be clear</p>
+          <p>I’m not asking for your exact location, constant updates, or an immediate reply. Your time and privacy matter. I’d like us to find a small, reasonable way to keep each other in the loop.</p>
+        </div>
+      </div>
+      <div class="rv">
+        <div class="mini s3" id="mini" role="img" aria-label="A small night sky. A message arrives, the stars settle, and the sky becomes calmer.">
+          <span class="st" style="left:12%;top:16%;--jx:9px;--jy:-7px"><i></i></span>
+          <span class="st" style="left:30%;top:30%;--jx:-8px;--jy:10px"><i></i></span>
+          <span class="st" style="left:48%;top:12%;--jx:7px;--jy:9px"><i></i></span>
+          <span class="st" style="left:66%;top:26%;--jx:-10px;--jy:-6px"><i></i></span>
+          <span class="st" style="left:84%;top:14%;--jx:8px;--jy:8px"><i></i></span>
+          <span class="st" style="left:20%;top:52%;--jx:-7px;--jy:-9px"><i></i></span>
+          <span class="st" style="left:58%;top:46%;--jx:10px;--jy:6px"><i></i></span>
+          <span class="st" style="left:90%;top:48%;--jx:-9px;--jy:9px"><i></i></span>
+          <span class="st" style="left:40%;top:62%;--jx:6px;--jy:-8px"><i></i></span>
+          <span class="st" style="left:76%;top:64%;--jx:-6px;--jy:7px"><i></i></span>
+          <div class="msg">I’m heading out, I might be busy for a bit</div>
+        </div>
+        <ol class="steps" id="steps">
+          <li class="on">A message arrives</li>
+          <li class="on">The stars settle</li>
+          <li class="on">The sky becomes calmer</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="feelings" data-label="How it feels" aria-labelledby="h-feel">
+    <div class="wrap">
+      <div class="stack narrow">
+        <p class="eyebrow rv" style="margin:0">How it feels</p>
+        <h2 id="h-feel" class="rv">What it’s like on my side</h2>
+        <p class="dim rv">Tap each card. These are only about what happens inside me.</p>
+      </div>
+      <div class="cards">
+        <article class="fcard glass tilt rv">
+          <h3><button class="fbtn" id="b1" aria-expanded="false" aria-controls="f1">
+            <svg class="ico" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="19" fill="none" stroke="#bdb6f4" stroke-opacity=".5" stroke-dasharray="3 5"/><circle cx="22" cy="22" r="9" fill="#bdb6f4" fill-opacity=".25"/><circle cx="22" cy="22" r="3.5" fill="#eeecfa"/></svg>
+            <span class="ft">When I don’t know what’s happening</span>
+            <span class="hint">Tap to read</span>
+            <span class="plus" aria-hidden="true"></span>
+          </button></h3>
+          <div class="fpanel" id="f1" role="region" aria-labelledby="b1"><div><p>When I don’t know whether you’re busy, out, or okay, I can start imagining worst-case scenarios, even when there may be a simple explanation.</p></div></div>
+        </article>
+        <article class="fcard glass tilt rv">
+          <h3><button class="fbtn" id="b2" aria-expanded="false" aria-controls="f2">
+            <svg class="ico" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="18" fill="none" stroke="#ffb996" stroke-opacity=".45"/><circle cx="22" cy="22" r="12" fill="none" stroke="#ffb996" stroke-opacity=".6"/><circle cx="22" cy="22" r="6" fill="none" stroke="#ffb996" stroke-opacity=".85"/><circle cx="22" cy="22" r="2" fill="#ffe6d2"/></svg>
+            <span class="ft">What my mind starts to do</span>
+            <span class="hint">Tap to read</span>
+            <span class="plus" aria-hidden="true"></span>
+          </button></h3>
+          <div class="fpanel" id="f2" role="region" aria-labelledby="b2"><div><p>My mind fills the quiet in. I’m working on pausing, grounding myself, and not assuming the worst.</p></div></div>
+        </article>
+        <article class="fcard glass tilt rv">
+          <h3><button class="fbtn" id="b3" aria-expanded="false" aria-controls="f3">
+            <svg class="ico" viewBox="0 0 44 44" aria-hidden="true"><circle cx="15" cy="23" r="10" fill="#ffb996" fill-opacity=".22"/><circle cx="29" cy="21" r="10" fill="#bdb6f4" fill-opacity=".22"/><circle cx="15" cy="23" r="3" fill="#ffe6d2"/><circle cx="29" cy="21" r="3" fill="#eeecfa"/></svg>
+            <span class="ft">What helps me reconnect</span>
+            <span class="hint">Tap to read</span>
+            <span class="plus" aria-hidden="true"></span>
+          </button></h3>
+          <div class="fpanel" id="f3" role="region" aria-labelledby="b3"><div><p>A little context, when it works for you, helps me feel connected and gives me a chance to manage my worry.</p></div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="breathe" data-label="A quiet moment" aria-labelledby="h-breathe">
+    <div class="wrap narrow breathe">
+      <p class="eyebrow rv" style="margin:0">Only if you’d like to</p>
+      <h2 id="h-breathe" class="rv">Take a quiet moment</h2>
+      <div class="orbwrap rv"><div class="orb" id="orb" aria-hidden="true"></div></div>
+      <p class="phase" id="phase">Press Start whenever you’d like.</p>
+      <button class="btn ghost" id="breathBtn" type="button">Start</button>
+      <p class="rv" style="font-size:1.15rem; max-width:30rem">I’m learning to take care of my anxiety too. This is one small reminder to slow down and breathe.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="talk" data-label="Our conversation" aria-labelledby="h-talk">
+    <div class="wrap">
+      <div class="stack narrow">
+        <p class="eyebrow rv" style="margin:0">Our conversation</p>
+        <h2 id="h-talk" class="rv">The conversation I hope we can have</h2>
+        <p class="dim rv">It takes two of us. Your side matters just as much as mine.</p>
+      </div>
+      <div class="bubbles">
+        <div class="glass bubble v tilt rv"><span class="who"><span class="dot"></span>Vikram</span><p class="q">I want to tell you what helps me feel reassured.</p></div>
+        <div class="glass bubble a tilt rv"><span class="who"><span class="dot"></span>Aashi</span><p class="q">I want to understand what feels comfortable for you, too.</p></div>
+      </div>
+      <div class="talk-actions">
+        <p class="rv" style="font-size:1.2rem; max-width:40rem">Could we talk about what kind of heads-up feels natural for both of us? I want this to be something we agree on together.</p>
+        <button class="btn" id="talkBtn" type="button" aria-expanded="false" aria-controls="talkMsg">Let’s talk when you’re ready</button>
+        <p class="reveal-msg" id="talkMsg" hidden>No rush. I’d rather understand each other than make this feel like an obligation.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec closing" id="closing" data-label="With love" aria-labelledby="h-close">
+    <div class="wrap">
+      <h2 id="h-close" class="eyebrow" style="font-family:var(--font-body)">With love</h2>
+      <p class="copy">I care about you, Aashi. I wanted you to understand why silence can sometimes make me anxious, and what might help me feel reassured. You deserve your independence, and I want us to find a way of communicating that respects both your space and my feelings.</p>
+      <p class="sign">With love,<b>Vikram</b></p>
+    </div>
+  </section>
+</main>
+
+<div class="dock">
+  <div class="pill" id="pill" aria-hidden="true">1 / 7 · Hello</div>
+  <button class="mbtn" id="stillBtn" type="button" aria-pressed="false">Reduce motion</button>
+</div>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var still = mq.matches;
+  var stillBtn = document.getElementById('stillBtn');
+  var raf = 0;
+  function clamp(v, a, b) { return Math.min(b, Math.max(a, v)); }
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  function ease(x) { return x * x * (3 - 2 * x); }
+
+  /* ---------- sky ---------- */
+  var cv = document.getElementById('sky');
+  var ctx = cv.getContext('2d');
+  var W = 0, H = 0, DPR = 1;
+  var sy = 0, prog = 0, closeF = 0, calmTarget = 0, calm = 0;
+  var mx = 0, my = 0, tmx = 0, tmy = 0;
+  var secs = Array.prototype.slice.call(document.querySelectorAll('.sec'));
+  var sec3 = document.getElementById('help');
+  var secClose = document.getElementById('closing');
+
+  function rng(a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; var t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  var r = rng(20261017);
+  var stars = [], clouds = [];
+  var tints = ['255,255,255', '214,208,255', '255,226,206'];
+  for (var i = 0; i < 260; i++) {
+    var z = 0.15 + 0.85 * Math.pow(r(), 1.4);
+    stars.push({ x: r(), y: r(), z: z, rad: 0.45 + z * 1.25, ph: r() * 6.28, sp: 0.3 + r() * 0.7, c: tints[r() < 0.7 ? 0 : (r() < 0.6 ? 1 : 2)], a: 0.35 + z * 0.6 });
+  }
+  var ctones = ['170,160,235', '196,170,232', '255,190,160'];
+  for (var j = 0; j < 7; j++) {
+    clouds.push({ x: r(), y: 0.55 + r() * 0.4, w: 0.38 + r() * 0.34, sp: 0.003 + r() * 0.007, a: 0.05 + r() * 0.05, z: 0.4 + r() * 0.6, c: ctones[j % 3] });
+  }
+
+  function size() {
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth; H = window.innerHeight;
+    cv.width = Math.round(W * DPR); cv.height = Math.round(H * DPR);
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  }
+
+  function readScroll() {
+    sy = window.pageYOffset || 0;
+    var dh = document.documentElement.scrollHeight - H;
+    prog = dh > 0 ? clamp(sy / dh, 0, 1) : 0;
+    var rc = secClose.getBoundingClientRect();
+    closeF = ease(clamp(1 - rc.top / H, 0, 1));
+    var r3 = sec3.getBoundingClientRect();
+    calmTarget = r3.top < H * 0.55 ? 1 : 0;
+    document.getElementById('bar').style.transform = 'scaleX(' + prog.toFixed(4) + ')';
+  }
+
+  var lastT = 0, t0 = performance.now();
+  function draw(now) {
+    var t = still ? 0 : (now - t0) / 1000;
+    var dt = clamp((now - lastT) / 1000, 0, 0.1); lastT = now;
+    if (still) { calm = calmTarget; mx = 0; my = 0; }
+    else {
+      calm += (calmTarget - calm) * (1 - Math.exp(-dt * 1.2));
+      mx += (tmx - mx) * 0.04; my += (tmy - my) * 0.04;
+    }
+    var speed = lerp(1, 0.45, calm);
+    ctx.clearRect(0, 0, W, H);
+
+    var g = ctx.createLinearGradient(0, 0, 0, H);
+    g.addColorStop(0, '#070b1f'); g.addColorStop(0.55, '#0d1233'); g.addColorStop(1, '#2a2163');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    var hg = ctx.createRadialGradient(W * 0.5, H * 1.05, 0, W * 0.5, H * 1.05, W * 0.85);
+    hg.addColorStop(0, 'rgba(255,185,150,' + (0.1 + 0.09 * calm).toFixed(3) + ')'); hg.addColorStop(1, 'rgba(255,185,150,0)');
+    ctx.fillStyle = hg; ctx.fillRect(0, 0, W, H);
+
+    /* moon */
+    var small = W < 600;
+    var mr = clamp(Math.min(W, H) * 0.065, 24, 58);
+    var mcx = W * (small ? 0.8 : 0.82) - mx * 6, mcy = H * (small ? 0.1 : 0.17) - Math.min(sy, 500) * 0.04 - my * 4;
+    var ma = lerp(1, 0.62, clamp(sy / (H * 2), 0, 1));
+    ctx.globalAlpha = ma;
+    var mg = ctx.createRadialGradient(mcx, mcy, mr * 0.8, mcx, mcy, mr * 6);
+    mg.addColorStop(0, 'rgba(255,225,190,0.3)'); mg.addColorStop(1, 'rgba(255,225,190,0)');
+    ctx.fillStyle = mg; ctx.beginPath(); ctx.arc(mcx, mcy, mr * 6, 0, 6.2832); ctx.fill();
+    var md = ctx.createRadialGradient(mcx - mr * 0.3, mcy - mr * 0.3, mr * 0.1, mcx, mcy, mr);
+    md.addColorStop(0, '#fff6e6'); md.addColorStop(1, '#e6d0b2');
+    ctx.fillStyle = md; ctx.beginPath(); ctx.arc(mcx, mcy, mr, 0, 6.2832); ctx.fill();
+    ctx.fillStyle = 'rgba(120,98,120,0.14)';
+    [[-0.3, -0.1, 0.22], [0.25, 0.3, 0.17], [0.15, -0.35, 0.12]].forEach(function (c) {
+      ctx.beginPath(); ctx.arc(mcx + c[0] * mr, mcy + c[1] * mr, c[2] * mr, 0, 6.2832); ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+
+    /* clouds */
+    clouds.forEach(function (c) {
+      var wpx = Math.max(220, c.w * W);
+      var xp = (((c.x * 1.6 + c.sp * t * speed) % 1.6) - 0.3) * W - mx * c.z * 10;
+      var yp = c.y * H - sy * 0.03 * c.z;
+      var a = c.a * (1 + 0.6 * calm);
+      for (var k = 0; k < 5; k++) {
+        var bx = xp + (k - 2) * wpx * 0.2, by = yp + Math.sin(k * 1.7) * wpx * 0.035, br = wpx * 0.14 * (0.8 + 0.2 * Math.sin(k * 2.3));
+        var cg = ctx.createRadialGradient(bx, by, 0, bx, by, br);
+        cg.addColorStop(0, 'rgba(' + c.c + ',' + a.toFixed(3) + ')'); cg.addColorStop(1, 'rgba(' + c.c + ',0)');
+        ctx.fillStyle = cg; ctx.beginPath(); ctx.arc(bx, by, br, 0, 6.2832); ctx.fill();
+      }
+    });
+
+    /* stars */
+    var amp = lerp(0.45, 0.15, calm);
+    var pw = W + 20, ph = H + 40;
+    for (var s = 0; s < stars.length; s++) {
+      var st = stars[s];
+      var bx2 = st.x * pw + t * st.z * 5 * speed + mx * st.z * 14;
+      var by2 = st.y * ph - sy * st.z * 0.05 - my * st.z * 10;
+      var x = ((bx2 % pw) + pw) % pw - 10, y = ((by2 % ph) + ph) % ph - 20;
+      var al = st.a * (1 - amp + amp * Math.sin(t * st.sp + st.ph));
+      ctx.fillStyle = 'rgba(' + st.c + ',' + clamp(al, 0, 1).toFixed(3) + ')';
+      if (st.rad < 1.1) ctx.fillRect(x, y, st.rad * 1.4, st.rad * 1.4);
+      else { ctx.beginPath(); ctx.arc(x, y, st.rad, 0, 6.2832); ctx.fill(); }
+    }
+
+    /* two lights */
+    var heroF = 1 - clamp(sy / (H * 0.7), 0, 1);
+    var e = ease(clamp(prog * 1.15, 0, 1));
+    var sepS = W * (small ? 0.62 : 0.5), sepE = Math.max(72, W * 0.1);
+    var sep = lerp(sepS, sepE, e);
+    var cx = W * 0.5 + Math.sin(t * 0.11) * W * 0.015;
+    var yb = lerp(H * 0.7, H * 0.3, closeF);
+    var A = { x: cx - sep / 2 + Math.sin(t * 0.21) * 9, y: yb + Math.sin(t * 0.17 + 1) * 10, c: '255,201,160' };
+    var B = { x: cx + sep / 2 + Math.sin(t * 0.19 + 2) * 9, y: yb + Math.sin(t * 0.15 + 4) * 10, c: '183,173,255' };
+    var vis = Math.max(heroF, closeF);
+    var la = lerp(0.55, 1, vis);
+    var sh = clamp(closeF * 0.9 + e * 0.25, 0, 1) * 0.22;
+    if (sh > 0.01) {
+      var mxp = (A.x + B.x) / 2, myp = (A.y + B.y) / 2, sr = sep * 1.5 + 60;
+      var sg = ctx.createRadialGradient(mxp, myp, 0, mxp, myp, sr);
+      sg.addColorStop(0, 'rgba(255,196,170,' + sh.toFixed(3) + ')'); sg.addColorStop(0.6, 'rgba(143,134,224,' + (sh * 0.45).toFixed(3) + ')'); sg.addColorStop(1, 'rgba(143,134,224,0)');
+      ctx.fillStyle = sg; ctx.beginPath(); ctx.arc(mxp, myp, sr, 0, 6.2832); ctx.fill();
+    }
+    [A, B].forEach(function (L, idx) {
+      var pulse = 1 + 0.08 * Math.sin(t * 0.8 + idx * 2);
+      var hr = 50 * pulse;
+      var lg = ctx.createRadialGradient(L.x, L.y, 0, L.x, L.y, hr);
+      lg.addColorStop(0, 'rgba(' + L.c + ',' + (0.6 * la).toFixed(3) + ')'); lg.addColorStop(0.35, 'rgba(' + L.c + ',' + (0.2 * la).toFixed(3) + ')'); lg.addColorStop(1, 'rgba(' + L.c + ',0)');
+      ctx.fillStyle = lg; ctx.beginPath(); ctx.arc(L.x, L.y, hr, 0, 6.2832); ctx.fill();
+      ctx.fillStyle = 'rgba(255,248,240,' + (0.95 * la).toFixed(3) + ')';
+      ctx.beginPath(); ctx.arc(L.x, L.y, 3.8, 0, 6.2832); ctx.fill();
+    });
+    if (vis > 0.02) {
+      ctx.font = 'italic 600 ' + (small ? 18 : 22) + 'px "Cormorant Garamond", Georgia, serif';
+      ctx.textAlign = 'center';
+      ctx.fillStyle = 'rgba(238,236,250,' + (0.92 * vis).toFixed(3) + ')';
+      ctx.fillText('Aashi', A.x, A.y + 38);
+      ctx.fillText('Vikram', B.x, B.y + 38);
+    }
+  }
+
+  function loop(now) {
+    raf = 0; draw(now);
+    if (!still && !document.hidden) raf = requestAnimationFrame(loop);
+  }
+  function kick() { if (!raf) raf = requestAnimationFrame(loop); }
+
+  window.addEventListener('scroll', function () { readScroll(); kick(); }, { passive: true });
+  window.addEventListener('resize', function () { size(); readScroll(); kick(); });
+  document.addEventListener('visibilitychange', kick);
+  window.addEventListener('pointermove', function (ev) {
+    if (still || ev.pointerType !== 'mouse') return;
+    tmx = (ev.clientX / W - 0.5) * 2; tmy = (ev.clientY / H - 0.5) * 2;
+  }, { passive: true });
+
+  /* ---------- motion toggle ---------- */
+  var mini = document.getElementById('mini');
+  var stepEls = document.querySelectorAll('#steps li');
+  var miniTimer = 0, miniInView = false;
+  function setStage(n) {
+    mini.className = 'mini s' + n;
+    for (var i = 0; i < stepEls.length; i++) stepEls[i].classList.toggle('on', n >= i + 1);
+  }
+  function runMini(stage) {
+    clearTimeout(miniTimer);
+    if (still || !miniInView) { setStage(3); return; }
+    setStage(stage);
+    var wait = [1800, 2800, 2800, 4800][stage];
+    miniTimer = setTimeout(function () { runMini((stage + 1) % 4); }, wait);
+  }
+  function applyStill() {
+    root.setAttribute('data-still', still ? 'true' : 'false');
+    stillBtn.setAttribute('aria-pressed', still ? 'true' : 'false');
+    runMini(0); kick();
+  }
+  stillBtn.addEventListener('click', function () { still = !still; applyStill(); });
+  if (mq.addEventListener) mq.addEventListener('change', function (e) { still = e.matches; applyStill(); });
+
+  /* ---------- scrolling helpers ---------- */
+  function go(id) {
+    var el = document.getElementById(id.replace('#', ''));
+    if (!el) return;
+    el.scrollIntoView({ behavior: still ? 'auto' : 'smooth', block: 'start' });
+    var h = el.querySelector('h1,h2');
+    if (h) { h.setAttribute('tabindex', '-1'); try { h.focus({ preventScroll: true }); } catch (e) { h.focus(); } }
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-go]'), function (a) {
+    a.addEventListener('click', function (ev) { ev.preventDefault(); go(a.getAttribute('href')); });
+  });
+
+  /* ---------- nav state ---------- */
+  var dotLinks = document.querySelectorAll('#dots a');
+  var pill = document.getElementById('pill');
+  function setCurrent(i) {
+    for (var k = 0; k < dotLinks.length; k++) {
+      if (k === i) dotLinks[k].setAttribute('aria-current', 'true'); else dotLinks[k].removeAttribute('aria-current');
+    }
+    pill.textContent = (i + 1) + ' / ' + secs.length + ' · ' + secs[i].getAttribute('data-label');
+  }
+  setCurrent(0);
+  if ('IntersectionObserver' in window) {
+    var navIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) setCurrent(secs.indexOf(en.target)); });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    secs.forEach(function (s) { navIO.observe(s); });
+
+    var miniIO = new IntersectionObserver(function (entries) {
+      var v = entries[0].isIntersecting;
+      if (v === miniInView) return;
+      miniInView = v;
+      runMini(0);
+    }, { threshold: 0.5 });
+    miniIO.observe(mini);
+
+    var rvIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.remove('pre'); rvIO.unobserve(en.target); } });
+    }, { threshold: 0.12 });
+    Array.prototype.forEach.call(document.querySelectorAll('.rv'), function (el) {
+      if (el.getBoundingClientRect().top > window.innerHeight * 0.92) { el.classList.add('pre'); rvIO.observe(el); }
+    });
+  }
+
+  /* ---------- tilt ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('.tilt'), function (el) {
+    el.addEventListener('pointermove', function (ev) {
+      if (still || ev.pointerType !== 'mouse') return;
+      var b = el.getBoundingClientRect();
+      var px = (ev.clientX - b.left) / b.width - 0.5, py = (ev.clientY - b.top) / b.height - 0.5;
+      el.style.setProperty('--ry', (px * 5).toFixed(2) + 'deg');
+      el.style.setProperty('--rx', (-py * 4).toFixed(2) + 'deg');
+    });
+    el.addEventListener('pointerleave', function () { el.style.setProperty('--rx', '0deg'); el.style.setProperty('--ry', '0deg'); });
+  });
+
+  /* ---------- feeling cards ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('.fbtn'), function (b) {
+    b.addEventListener('click', function () {
+      var open = b.getAttribute('aria-expanded') === 'true';
+      b.setAttribute('aria-expanded', open ? 'false' : 'true');
+      b.querySelector('.hint').textContent = open ? 'Tap to read' : 'Tap to close';
+    });
+  });
+
+  /* ---------- breathing ---------- */
+  var orb = document.getElementById('orb'), phase = document.getElementById('phase'), bb = document.getElementById('breathBtn');
+  var breathing = false, bt = 0, lastB = 0;
+  function breathLoop(now) {
+    if (!breathing) return;
+    bt += (now - lastB) / 1000; lastB = now;
+    var c = bt % 10, sc, txt;
+    if (c < 4) { sc = ease(c / 4); txt = 'Breathe in'; } else { sc = 1 - ease((c - 4) / 6); txt = 'Breathe out'; }
+    orb.style.transform = 'scale(' + (0.72 + 0.42 * sc).toFixed(3) + ')';
+    if (phase.textContent !== txt) phase.textContent = txt;
+    requestAnimationFrame(breathLoop);
+  }
+  bb.addEventListener('click', function () {
+    breathing = !breathing;
+    if (breathing) { bb.textContent = 'Pause'; lastB = performance.now(); phase.textContent = 'Breathe in'; requestAnimationFrame(breathLoop); }
+    else { bb.textContent = 'Start'; phase.textContent = 'Paused. Start again whenever you like.'; }
+  });
+
+  /* ---------- talk reveal ---------- */
+  var tb = document.getElementById('talkBtn'), tm = document.getElementById('talkMsg');
+  tb.addEventListener('click', function () {
+    var open = tb.getAttribute('aria-expanded') === 'true';
+    tb.setAttribute('aria-expanded', open ? 'false' : 'true');
+    tm.hidden = open;
+  });
+
+  /* ---------- go ---------- */
+  size(); readScroll(); applyStill();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(kick);
+})();
+</script>
+
+</body></html>
